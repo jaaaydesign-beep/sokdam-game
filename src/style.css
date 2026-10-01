@@ -1,0 +1,176 @@
+/* 속담 비행기 — 공통 스타일 (mobile + web)
+   글꼴: Jua(제목·버튼·글자), Gowun Dodum(뜻풀이) — Google Fonts
+   독립 요소: .balloon .bomb .plane .heart .cell .stone .pebble .critter */
+html,body{margin:0;min-height:100%;background:#EAF4FB}
+body{display:flex;justify-content:center;align-items:flex-start;padding:24px 0;box-sizing:border-box}
+/* PC 와이드 화면: 모바일 화면은 가운데 세로 카드형 */
+.scr{flex:0 0 auto;max-width:390px;margin:0 auto;border-radius:32px;box-shadow:0 20px 60px rgba(43,58,85,.18)}
+.wscr{flex:0 0 auto;max-width:1440px;margin:0 auto;border-radius:24px;box-shadow:0 20px 60px rgba(43,58,85,.18)}
+
+.scr{font-family:'Jua','Gowun Dodum',sans-serif;color:#2B3A55;position:relative;overflow:hidden;box-sizing:border-box;
+  background:linear-gradient(180deg,#B9E0FF 0%,#D9F0FF 55%,#EEF8FF 100%)}
+.scr *{box-sizing:border-box}
+button{font-family:inherit;cursor:pointer}
+
+/* ---- cloud ---- */
+.cloud{position:absolute;width:90px;height:30px;background:#fff;border-radius:999px;opacity:.95}
+.cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+.cloud::before{width:38px;height:38px;left:16px;top:-20px}
+.cloud::after{width:28px;height:28px;left:48px;top:-14px}
+.cloud.sm{transform:scale(.6)}
+.cloud.lg{transform:scale(1.35)}
+.cloud.soft{opacity:.7}
+
+/* ---- balloon (independent element: .balloon) ---- */
+.balloon{position:absolute;width:66px;height:78px;display:flex;align-items:center;justify-content:center;
+  font-size:36px;line-height:1;color:#2B3A55;border-radius:50% 50% 50% 50%/55% 55% 45% 45%;
+  box-shadow:inset -8px -10px 0 rgba(0,0,0,.08),0 6px 0 rgba(43,58,85,.08)}
+.balloon::before{content:"";position:absolute;left:12px;top:11px;width:14px;height:22px;border-radius:50%;
+  background:rgba(255,255,255,.6);transform:rotate(22deg)}
+.balloon::after{content:"";position:absolute;left:50%;bottom:-7px;width:12px;height:12px;background:inherit;
+  transform:translateX(-50%) rotate(45deg);border-radius:2px;box-shadow:inherit}
+.balloon .str{position:absolute;left:50%;bottom:-36px;width:3px;height:30px;border-radius:3px;
+  background:rgba(43,58,85,.35);transform:translateX(-50%) rotate(8deg);transform-origin:top}
+.b-pink{background:#FFA1C0}.b-yellow{background:#FFDC6B}.b-mint{background:#9BEAD2}
+.b-lav{background:#CDBDFF}.b-orange{background:#FFBE78}.b-blue{background:#9DD6FF}
+
+/* ---- bomb / plane / heart are inline SVG with these hooks ---- */
+.bomb{position:absolute}
+.bomb .spark{transform-origin:52px 7px}
+.plane{position:absolute}
+.plane img{display:block}
+.plane.top{position:absolute}
+.heart{display:block}
+
+/* ---- lanes ---- */
+.lanes{position:absolute;left:0;width:390px}
+.lane{position:absolute;top:0;bottom:0;width:78px;border-right:3px dashed rgba(255,255,255,.75)}
+.lane:last-child{border-right:0}
+
+/* ---- top bar ---- */
+.chip{height:44px;padding:0 16px;border-radius:22px;background:#fff;display:flex;align-items:center;
+  font-size:22px;color:#2B3A55;box-shadow:0 4px 0 rgba(43,58,85,.1)}
+.icon-btn{width:52px;height:52px;border-radius:26px;border:0;background:#fff;display:flex;align-items:center;
+  justify-content:center;box-shadow:0 4px 0 rgba(43,58,85,.12);padding:0}
+.quiz{background:#fff;border-radius:24px;padding:12px 14px;display:flex;align-items:center;justify-content:center;
+  gap:8px;font-size:30px;line-height:1;box-shadow:0 5px 0 rgba(43,58,85,.1);flex-wrap:wrap}
+.cells{display:flex;gap:6px}
+.cell{width:44px;height:48px;border-radius:12px;border:3px dashed #9FBBD8;background:#F3F8FF;display:flex;
+  align-items:center;justify-content:center;font-size:28px;color:#2B3A55}
+.cell.on{border:3px solid #4FBFA0;background:#9BEAD2}
+.cell.hot{border:3px solid #FFB400;background:#FFF2B8;box-shadow:0 0 0 4px rgba(255,210,77,.5)}
+
+/* ---- buttons ---- */
+.btn{border:0;border-radius:30px;display:flex;align-items:center;justify-content:center;gap:12px;
+  font-size:36px;line-height:1;color:#4A2E12;background:#FFD24D;box-shadow:0 8px 0 #E0A800;height:92px;width:100%}
+.btn.mint{background:#9BEAD2;box-shadow:0 8px 0 #4FBFA0;color:#174A3E}
+.btn.white{background:#fff;box-shadow:0 8px 0 #C9D6E6;color:#2B3A55}
+.btn.arrow{height:104px;width:160px;border-radius:32px}
+.linkish{background:none;border:0;font-size:24px;color:#5B6B86;text-decoration:underline;text-underline-offset:5px}
+
+/* ---- stage grid ---- */
+.panel{background:rgba(255,255,255,.72);border-radius:36px 36px 0 0;padding:22px 18px 30px}
+.grp-head{display:flex;align-items:center;justify-content:space-between;margin:14px 2px 10px}
+.grp-head h3{margin:0;font-size:24px;font-weight:400;color:#2B3A55}
+.grp-head .prog{font-size:18px;color:#5B6B86}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.st{border:0;padding:0;position:relative;height:60px;border-radius:20px;display:flex;align-items:center;justify-content:center;
+  font-size:26px;background:#fff;color:#2B3A55;box-shadow:0 5px 0 rgba(43,58,85,.12)}
+.st.done{background:#FFDC6B;box-shadow:0 5px 0 #E0A800}
+.st.done .star{position:absolute;right:-6px;top:-10px;width:28px;height:28px}
+.st.cur{background:#fff;border:4px solid #FF7A6B;box-shadow:0 5px 0 #E0574A}
+.st.lock{background:#E3E9F1;color:#94A3B8;box-shadow:0 5px 0 #C9D6E6}
+.st.lock svg{width:30px;height:30px}
+
+/* ---- card / overlay ---- */
+.card{background:#fff;border-radius:36px;padding:28px 24px 26px;box-shadow:0 12px 0 rgba(43,58,85,.12)}
+.ribbon{display:inline-flex;align-items:center;height:56px;padding:0 28px;border-radius:28px;background:#FF7A6B;
+  color:#fff;font-size:30px;box-shadow:0 6px 0 #E0574A}
+.meaning{background:#F3F8FF;border-radius:20px;padding:16px 18px;font-family:'Gowun Dodum',sans-serif;
+  font-size:21px;line-height:1.45;color:#3B4A66}
+.hl{display:inline-block;background:#9BEAD2;border-radius:12px;padding:2px 10px;color:#174A3E}
+.confetti{position:absolute;width:12px;height:20px;border-radius:4px}
+.dim{position:absolute;inset:0;background:rgba(43,58,85,.55)}
+
+.wscr{font-family:'Jua','Gowun Dodum',sans-serif;color:#2B3A55;position:relative;overflow:hidden;box-sizing:border-box;
+  background:linear-gradient(180deg,#A9D9FF 0%,#D2EDFF 50%,#EAF6FF 100%)}
+.wscr *{box-sizing:border-box}
+.hill{position:absolute;border-radius:50%;background:#BFEBD2}
+.hill.b{background:#A9E2C2}
+.board{position:absolute;border-radius:40px;background:rgba(255,255,255,.28);border:4px solid rgba(255,255,255,.8)}
+.board .lane{width:120px}
+.balloon.big{width:86px;height:100px;font-size:46px}
+.balloon.big::before{left:16px;top:14px;width:18px;height:28px}
+.balloon.big .str{bottom:-44px;height:38px}
+.side{position:absolute;display:flex;flex-direction:column;gap:18px}
+.hud{background:#fff;border-radius:28px;padding:18px 20px;box-shadow:0 6px 0 rgba(43,58,85,.1)}
+.hud h4{margin:0 0 10px;font-size:20px;font-weight:400;color:#5B6B86}
+.chip.lg{height:56px;font-size:28px;padding:0 22px;border-radius:28px}
+.icon-btn.lg{width:68px;height:68px;border-radius:34px}
+.cell.lg{width:56px;height:62px;font-size:36px;border-radius:14px}
+.key{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:#F3F8FF;
+  border:2px solid #C9D6E6;box-shadow:0 3px 0 #C9D6E6;font-size:22px;color:#2B3A55}
+.btn.wide-arrow{height:120px;width:220px;border-radius:36px}
+.st.lg{height:64px;font-size:26px}
+
+.field{position:absolute;background:linear-gradient(180deg,#CDEFB4 0%,#BFE8A8 100%)}
+.stone{position:absolute;border:0;background:none;padding:0;display:flex;align-items:center;justify-content:center;font-family:inherit;color:#4A3A2E}
+.stone svg{position:absolute;left:0;top:0;width:100%;height:100%}
+.stone .num{position:relative;font-size:28px;line-height:1;margin-top:-6px;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+.stone.lock .num{color:#6B6B6B}
+.stone.lock .lk{position:absolute;right:-4px;top:-6px;width:26px;height:26px;border-radius:13px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 0 rgba(0,0,0,.12)}
+.stone.lock .lk svg{position:static;width:16px;height:16px}
+.stone.cur{filter:drop-shadow(0 0 6px rgba(255,210,77,.9))}
+.pebble{position:absolute;border-radius:50%;background:#E8DCC4;border:2.5px solid #9C8762;box-shadow:0 2px 0 rgba(90,70,40,.25)}
+.critter{position:absolute}
+.tuft{position:absolute}
+.sign{position:absolute;display:flex;flex-direction:column;align-items:center}
+.sign .brd{background:#B98A5C;border:3px solid #8E6540;border-radius:10px;color:#FFF4E0;font-size:18px;padding:5px 12px;line-height:1;white-space:nowrap;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.sign .post{width:10px;height:34px;background:#8E6540;border-radius:0 0 4px 4px}
+.prog-pill{position:absolute;background:#fff;border-radius:16px;padding:5px 12px;font-size:18px;line-height:1;color:#2B3A55;box-shadow:0 3px 0 rgba(43,58,85,.12);white-space:nowrap}
+
+/* ===== 앱 셸 레이어 (시안 통합 시 추가분 — 위는 시안 game.css 원본 그대로) ===== */
+body{display:block;container-type:inline-size}
+/* 화면 전환: JS 가 .screen 에 .active 를 토글한다. 초기 화면은 #screen-main */
+.screen{display:none}
+.screen.active{display:block}
+/* 아트보드 스케일 래퍼: 좌표계(390/1440px)는 유지하고, 뷰포트가 좁으면 통째로 축소 */
+.stage{--s:min(1, calc(100cqw / (var(--w) * 1px)));
+  width:calc(var(--w) * var(--s) * 1px);height:calc(var(--h) * var(--s) * 1px);margin:0 auto}
+.stage>.scr,.stage>.wscr{transform:scale(var(--s));transform-origin:top left}
+/* 모바일/웹 아트보드 전환 (1024px 분기) */
+@media (max-width:1023.98px){.stage.web{display:none}}
+@media (min-width:1024px){.stage.mob{display:none}}
+/* 일시정지: JS 가 #screen-play 에 .paused 를 토글하면 모바일·웹 오버레이가 함께 표시된다 */
+.pause-layer{display:none}
+.screen.paused .pause-layer{display:block}
+/* 하트 상태 훅: 시안 SVG 의 인라인 fill/stroke 를 CSS 가 덮어 클래스 토글만으로 켜고 끈다 */
+.heart.on path{fill:#FF5E7E;stroke:#E23A5E}
+.heart.off path{fill:#FFFFFF;stroke:#C9D6E6}
+/* .stone.done/.lock 은 돌 SVG path 형상 자체가 달라 CSS 토글 불가 — JS 단계에서 상태별 템플릿 필요 */
+
+/* ======== 구현 추가분 (게임 로직 결합 — 시안·앱 셸 레이어 외 신규) ======== */
+/* 낙하물 클리핑: 모바일은 레인에서, 웹은 보드(판정선이 레인 740 아래 730)에서 자른다 */
+#screen-play .stage.mob .lanes{overflow:hidden}
+#screen-play .stage.web .board{overflow:hidden}
+#screen-play .lanes .balloon,#screen-play .lanes .bomb{left:0;top:0;will-change:transform}
+#screen-play [data-role=plane]{transition:left .18s ease-out}
+.qtext{font-size:38px;line-height:1.25;text-align:center;word-break:keep-all}
+[data-role=quiz],.meaning,[data-role=clear-sentence]{word-break:keep-all}
+.icon-btn.muted{opacity:.45}
+button{touch-action:manipulation}
+
+/* 연출 keyframes (시안은 정적 — 신규) */
+@keyframes shake{0%,100%{margin-left:0}25%{margin-left:-6px}75%{margin-left:6px}}
+.plane.shake{animation:shake .3s ease}
+@keyframes pop-catch{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+.cell.pop{animation:pop-catch .35s ease}
+@keyframes bomb-flash{0%,100%{filter:none}50%{filter:brightness(1.6) saturate(1.5) hue-rotate(-30deg)}}
+.scr.hit,.wscr.hit{animation:bomb-flash .35s ease}
+@keyframes spark-blink{0%,100%{opacity:1}50%{opacity:.3}}
+.bomb .spark{animation:spark-blink .5s linear infinite}
+/* 획득 연출 — transform 은 뷰 배율이 선점하므로 translate/opacity 로만 움직인다 */
+@keyframes fx-fade{to{opacity:0}}
+.pop.fx{animation:fx-fade .55s ease-out forwards}
+@keyframes fx-rise{to{opacity:0;translate:0 -70px}}
+.fly.fx{animation:fx-rise .6s ease-out forwards}

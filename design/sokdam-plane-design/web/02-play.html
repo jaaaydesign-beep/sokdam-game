@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>속담 비행기 — 웹 — 게임 플레이</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/game.css">
+</head>
+<body>
+<div class="wscr" style="width:1440px;height:900px">
+<div class="cloud lg" style="left:120px;top:140px"></div>
+<div class="cloud sm soft" style="left:300px;top:70px"></div>
+<div class="cloud soft" style="left:1120px;top:110px"></div>
+<div class="cloud lg soft" style="left:1200px;top:520px"></div>
+<div class="cloud sm soft" style="left:80px;top:600px"></div><div class="hill" style="left:-200px;top:780px;width:900px;height:400px"></div>
+<div class="hill b" style="left:500px;top:810px;width:700px;height:360px"></div>
+<div class="hill" style="left:1000px;top:770px;width:800px;height:420px"></div>
+<div class="board" style="left:420px;top:0;width:600px;height:900px;border-top:0;border-bottom:0;border-radius:0">
+  <div class="lanes" style="left:0;top:0;width:600px;height:720px"><div class="lane" style="left:0px"></div><div class="lane" style="left:120px"></div><div class="lane" style="left:240px"></div><div class="lane" style="left:360px"></div><div class="lane" style="left:480px"></div>
+    <div class="balloon b-pink big" style="left:137px;top:40px;transform:rotate(-6deg)">외<span class="str"></span></div>
+    <div class="balloon b-mint big" style="left:377px;top:150px;transform:rotate(5deg)">양<span class="str"></span></div>
+    <div class="balloon b-yellow big" style="left:17px;top:330px;transform:rotate(-3deg)">간<span class="str"></span></div>
+    <div class="balloon b-lav big" style="left:497px;top:470px;transform:rotate(6deg)">소<span class="str"></span></div>
+    <svg class="bomb" style="left:258px;top:250px" viewBox="0 0 64 80" width="84" height="105" role="img" aria-label="폭탄">
+ <path class="fuse" d="M36 16 C40 8 46 10 50 6" stroke="#8B5E3C" stroke-width="4" fill="none" stroke-linecap="round"/>
+ <g class="spark"><polygon points="52,0 54,5 59,5 55,8 57,13 52,10 47,13 49,8 45,5 50,5" fill="#FFD24D" stroke="#FF9F1C" stroke-width="1.5" stroke-linejoin="round"/></g>
+ <rect x="25" y="12" width="16" height="12" rx="5" fill="#64748B"/>
+ <circle cx="32" cy="50" r="28" fill="#4A5568"/>
+ <ellipse cx="19" cy="38" rx="6" ry="10" fill="#8B98B0" opacity=".55" transform="rotate(-28 19 38)"/>
+ <circle cx="23" cy="48" r="6.5" fill="#fff"/><circle cx="41" cy="48" r="6.5" fill="#fff"/>
+ <circle cx="25" cy="49" r="3" fill="#2B3A55"/><circle cx="43" cy="49" r="3" fill="#2B3A55"/>
+ <path d="M23 62 q4.5 -5 9 0 t9 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+ <circle cx="15" cy="58" r="3" fill="#FF9FB4" opacity=".8"/><circle cx="49" cy="58" r="3" fill="#FF9FB4" opacity=".8"/>
+</svg>
+  </div>
+  <div class="plane top" style="left:242px;top:730px;width:116px;height:128px"><img src="../assets/bunny_happy.png" alt="토끼 비행기" style="position:absolute;left:-6px;top:6px;width:128px;height:116px;transform:rotate(90deg)"></div>
+</div>
+<div class="side" style="left:48px;top:40px;width:324px;height:820px">
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <div class="chip lg">3단계</div>
+    <div class="hearts" style="display:flex;gap:4px"><svg class="heart on" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true"><path d="M16 28.5 5.2 18.2C1.4 14.6 1.6 8.4 5.8 5.4c3.3-2.4 7.6-1.5 10.2 1.9 2.6-3.4 6.9-4.3 10.2-1.9 4.2 3 4.4 9.2.6 12.8z" fill="#FF5E7E" stroke="#E23A5E" stroke-width="2" stroke-linejoin="round"/></svg><svg class="heart on" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true"><path d="M16 28.5 5.2 18.2C1.4 14.6 1.6 8.4 5.8 5.4c3.3-2.4 7.6-1.5 10.2 1.9 2.6-3.4 6.9-4.3 10.2-1.9 4.2 3 4.4 9.2.6 12.8z" fill="#FF5E7E" stroke="#E23A5E" stroke-width="2" stroke-linejoin="round"/></svg><svg class="heart on" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true"><path d="M16 28.5 5.2 18.2C1.4 14.6 1.6 8.4 5.8 5.4c3.3-2.4 7.6-1.5 10.2 1.9 2.6-3.4 6.9-4.3 10.2-1.9 4.2 3 4.4 9.2.6 12.8z" fill="#FF5E7E" stroke="#E23A5E" stroke-width="2" stroke-linejoin="round"/></svg></div>
+  </div>
+  <div class="hud" style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:26px 20px">
+    <h4 style="margin:0">속담을 완성해요</h4>
+    <div style="font-size:44px;line-height:1">소 잃고</div>
+    <div class="cells" style="gap:10px"><div class="cell lg "></div><div class="cell lg "></div><div class="cell lg "></div></div>
+    <div style="font-size:44px;line-height:1">고친다</div>
+  </div>
+  <div style="flex-grow:1"></div>
+  <button class="btn mint wide-arrow" style="align-self:flex-end" aria-label="왼쪽으로"><svg viewBox="0 0 24 24" width="60" height="60" aria-hidden="true"><path d="M15 5 L5 12 L15 19 Z" fill="#174A3E" stroke="#174A3E" stroke-width="2" stroke-linejoin="round"/></svg></button>
+</div>
+<div class="side" style="left:1068px;top:40px;width:324px;height:820px">
+  <div style="display:flex;gap:12px;justify-content:flex-end">
+  <button class="icon-btn lg" aria-label="일시정지"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="2.5" fill="#2B3A55"/><rect x="14" y="4" width="5" height="16" rx="2.5" fill="#2B3A55"/></svg></button>
+  <button class="icon-btn lg" aria-label="소리 끄기"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="#2B3A55" stroke="#2B3A55" stroke-width="1.5" stroke-linejoin="round"/><path d="M15.5 9.5a4 4 0 0 1 0 5M18 7a7.5 7.5 0 0 1 0 10" stroke="#2B3A55" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
+</div>
+  <div class="hud" style="display:flex;flex-direction:column;gap:12px">
+    <h4>키보드로도 움직일 수 있어요</h4>
+    <div style="display:flex;align-items:center;gap:10px"><span class="key">←</span><span class="key">→</span><span style="font-size:22px;color:#3B4A66">비행기 이동</span></div>
+    <div style="display:flex;align-items:center;gap:10px"><span class="key" style="width:110px">space</span><span style="font-size:22px;color:#3B4A66">일시정지</span></div>
+  </div>
+  <div class="hud" style="display:flex;flex-direction:column;gap:10px">
+    <h4>모은 글자</h4>
+    <div style="display:flex;gap:10px"><div class="balloon b-pink" style="left:0px;top:0px;position:relative;width:56px;height:66px;opacity:.35"></div><div class="balloon b-mint" style="left:0px;top:0px;position:relative;width:56px;height:66px;opacity:.35"></div><div class="balloon b-yellow" style="left:0px;top:0px;position:relative;width:56px;height:66px;opacity:.35"></div></div>
+  </div>
+  <div style="flex-grow:1"></div>
+  <button class="btn mint wide-arrow" style="align-self:flex-start" aria-label="오른쪽으로"><svg viewBox="0 0 24 24" width="60" height="60" aria-hidden="true"><path d="M9 5 L19 12 L9 19 Z" fill="#174A3E" stroke="#174A3E" stroke-width="2" stroke-linejoin="round"/></svg></button>
+</div>
+</div>
+</body>
+</html>
