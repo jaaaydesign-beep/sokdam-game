@@ -235,6 +235,8 @@
     + '</svg></span>';
 
   // 뷰별 배치 (시안 돌 1~10 실측 좌표). plane/pill 은 도전 중 돌 기준 상대 오프셋.
+  // 기본은 시안의 "돌 위쪽" 배치(돌 8 기준)인데, 위쪽 줄 돌에서는 비행기가
+  // "스테이지 징검다리" 제목·안내문을 덮으므로 해당 돌만 절대좌표로 비켜 배치한다.
   const STONE_LAYOUT = {
     m: {
       size: [78, 60],
@@ -242,6 +244,8 @@
         [230, 1160], [130, 1260], [260, 1360], [80, 1460], [220, 1560]],
       plane: { dx: -24, dy: -80, w: 107, h: 97 },
       pill: { dx: -9, dy: 66 },
+      planeAt: { 1: [146, 646] },            // 돌 1: 헤더(≤~630px)와 겹침 → 돌 오른쪽
+      pillAt: {},
     },
     w: {
       size: [89, 69],
@@ -249,6 +253,8 @@
         [1000, 380], [820, 440], [900, 560], [1080, 600], [1260, 660]],
       plane: { dx: -34, dy: -99, w: 133, h: 121 },
       pill: { dx: -11, dy: 75 },
+      planeAt: { 1: [612, 116], 2: [784, 180], 3: [1076, 223] }, // 헤더(≤~105px) 회피
+      pillAt: { 3: [995, 162] },             // 돌 3: 비행기가 아래로 간 자리라 필은 왼쪽
     },
   };
 
@@ -291,23 +297,26 @@
         host.appendChild(btn);
 
         if (status === 'cur') {
+          const planePos = layout.planeAt[s]
+            || [p[0] + layout.plane.dx, p[1] + layout.plane.dy];
           const plane = document.createElement('img');
           plane.className = 'plane side';
           plane.src = 'assets/bunny_happy.png';
           plane.alt = '토끼 비행기';
           plane.dataset.gen = '1';
-          plane.style.cssText = 'left:' + (p[0] + layout.plane.dx) + 'px;top:'
-            + (p[1] + layout.plane.dy) + 'px;width:' + layout.plane.w + 'px;height:'
+          plane.style.cssText = 'left:' + planePos[0] + 'px;top:' + planePos[1]
+            + 'px;width:' + layout.plane.w + 'px;height:'
             + layout.plane.h + 'px;transform:rotate(-8deg)';
           host.appendChild(plane);
 
+          const pillPos = layout.pillAt[s]
+            || [p[0] + layout.pill.dx, p[1] + layout.pill.dy];
           const pill = document.createElement('div');
           pill.className = 'prog-pill';
           pill.dataset.gen = '1';
           pill.textContent = prog.stoneProgress(cleared, s) + ' / '
             + prog.PROBLEMS_PER_STONE + ' 문제';
-          pill.style.cssText = 'left:' + (p[0] + layout.pill.dx) + 'px;top:'
-            + (p[1] + layout.pill.dy) + 'px';
+          pill.style.cssText = 'left:' + pillPos[0] + 'px;top:' + pillPos[1] + 'px';
           host.appendChild(pill);
         }
       }

@@ -162,6 +162,10 @@ body{display:block;container-type:inline-size}
 /* .stone.done/.lock 은 돌 SVG path 형상 자체가 달라 CSS 토글 불가 — JS 단계에서 상태별 템플릿 필요 */
 
 /* ======== 구현 추가분 (게임 로직 결합 — 시안·앱 셸 레이어 외 신규) ======== */
+/* 고정 높이 화면(.fit: 플레이·클리어·다시하기·웹 전체)은 세로도 화면에 맞춰 축소 —
+   폰에서 하단 화살표 버튼이 잘리는 문제 방지. 48px = body 상하 패딩.
+   (모바일 시작 화면은 의도된 세로 스크롤이라 제외. dvh 미지원 브라우저는 가로 기준 폴백) */
+.stage.fit{--s:min(1, calc(100cqw / (var(--w) * 1px)), calc((100dvh - 48px) / (var(--h) * 1px)))}
 /* 낙하물 클리핑: 모바일은 레인에서, 웹은 보드(판정선이 레인 740 아래 730)에서 자른다 */
 #screen-play .stage.mob .lanes{overflow:hidden}
 #screen-play .stage.web .board{overflow:hidden}
@@ -264,7 +268,7 @@ button{touch-action:manipulation}
 <rect x="29" y="18" width="30" height="5" rx="2.5" fill="#7FD8C4" stroke="#4FBFA0" stroke-width="1.5"/>
 <circle cx="29" cy="20" r="5" fill="#9BEAD2" stroke="#4FBFA0" stroke-width="1.5"/><circle cx="27" cy="19" r="1.3" fill="#2B3A55"/></svg><div class="pebble" style="left:125px;top:730px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:162px;top:740px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:195px;top:750px;width:18px;height:14px;transform:rotate(11deg)"></div><div class="pebble" style="left:208px;top:830px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:187px;top:840px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:162px;top:850px;width:18px;height:14px;transform:rotate(11deg)"></div><div class="pebble" style="left:175px;top:930px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:212px;top:940px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:245px;top:950px;width:18px;height:14px;transform:rotate(11deg)"></div><div class="pebble" style="left:235px;top:1030px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:192px;top:1040px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:145px;top:1050px;width:18px;height:14px;transform:rotate(11deg)"></div><div class="pebble" style="left:140px;top:1130px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:182px;top:1140px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:220px;top:1150px;width:18px;height:14px;transform:rotate(11deg)"></div><div class="pebble" style="left:235px;top:1230px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:212px;top:1240px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:185px;top:1250px;width:18px;height:14px;transform:rotate(11deg)"></div><div class="pebble" style="left:192px;top:1330px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:227px;top:1340px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:258px;top:1350px;width:18px;height:14px;transform:rotate(11deg)"></div><div class="pebble" style="left:245px;top:1430px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:202px;top:1440px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:155px;top:1450px;width:18px;height:14px;transform:rotate(11deg)"></div><div class="pebble" style="left:145px;top:1530px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:182px;top:1540px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:215px;top:1550px;width:18px;height:14px;transform:rotate(11deg)"></div><div class="pebble" style="left:232px;top:1630px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:217px;top:1640px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:198px;top:1650px;width:18px;height:14px;transform:rotate(11deg)"></div><div class="pebble" style="left:158px;top:1730px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:137px;top:1740px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:112px;top:1750px;width:18px;height:14px;transform:rotate(11deg)"></div><div class="pebble" style="left:135px;top:1830px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:182px;top:1840px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:225px;top:1850px;width:18px;height:14px;transform:rotate(11deg)"></div><div class="pebble" style="left:240px;top:1930px;width:18px;height:14px;transform:rotate(17deg)"></div><div class="pebble" style="left:212px;top:1940px;width:14px;height:11px;transform:rotate(14deg)"></div><div class="pebble" style="left:180px;top:1950px;width:18px;height:14px;transform:rotate(11deg)"></div><div style="position:absolute;left:0;top:1950px;width:390px;height:90px;background:linear-gradient(180deg,rgba(191,232,168,0),#BFE8A8 70%)"></div></div>
 </div>
-<div class="stage web" style="--w:1440;--h:900">
+<div class="stage web fit" style="--w:1440;--h:900">
 <div class="wscr" style="width:1440px;height:900px"><div class="cloud lg" style="left:120px;top:120px"></div><div class="cloud sm soft" style="left:380px;top:70px"></div><div class="cloud soft" style="left:60px;top:560px"></div><div class="hill" style="left:-200px;top:780px;width:900px;height:400px"></div><div style="position:absolute;left:70px;top:0;width:520px;height:900px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px">
   <h1 style="margin:0;font-size:100px;font-weight:400;line-height:1;color:#2B3A55;text-shadow:0 6px 0 #fff;letter-spacing:-2px">속담 비행기</h1>
   <p style="margin:0;font-size:30px;color:#5B6B86">글자 풍선을 모아 속담을 완성해요!</p>
@@ -321,7 +325,7 @@ button{touch-action:manipulation}
 </section>
 
 <section class="screen" id="screen-play">
-<div class="stage mob" style="--w:390;--h:844">
+<div class="stage mob fit" style="--w:390;--h:844">
 <div class="scr" style="width:390px;height:844px">
 <div class="cloud soft" style="left:24px;top:230px"></div>
 <div class="cloud soft sm" style="left:280px;top:300px"></div>
@@ -371,7 +375,7 @@ button{touch-action:manipulation}
 </div>
 </div>
 </div>
-<div class="stage web" style="--w:1440;--h:900">
+<div class="stage web fit" style="--w:1440;--h:900">
 <div class="wscr" style="width:1440px;height:900px">
 <div class="cloud lg" style="left:120px;top:140px"></div>
 <div class="cloud sm soft" style="left:300px;top:70px"></div>
@@ -482,7 +486,7 @@ button{touch-action:manipulation}
 </section>
 
 <section class="screen" id="screen-clear">
-<div class="stage mob" style="--w:390;--h:844">
+<div class="stage mob fit" style="--w:390;--h:844">
 <div class="scr" style="width:390px;height:844px">
 <div class="cloud soft" style="left:40px;top:300px"></div>
 <div class="cloud soft sm" style="left:290px;top:560px"></div>
@@ -499,7 +503,7 @@ button{touch-action:manipulation}
 </div>
 </div>
 </div>
-<div class="stage web" style="--w:1440;--h:900">
+<div class="stage web fit" style="--w:1440;--h:900">
 <div class="wscr" style="width:1440px;height:900px">
 <div class="cloud lg" style="left:120px;top:140px"></div>
 <div class="cloud sm soft" style="left:300px;top:70px"></div>
@@ -523,7 +527,7 @@ button{touch-action:manipulation}
 </section>
 
 <section class="screen" id="screen-retry">
-<div class="stage mob" style="--w:390;--h:844">
+<div class="stage mob fit" style="--w:390;--h:844">
 <div class="scr" style="width:390px;height:844px;background:linear-gradient(180deg,#C9DFF0 0%,#DFEDF8 55%,#EEF6FC 100%)">
 <div class="cloud soft lg" style="left:40px;top:120px"></div>
 <div class="cloud soft" style="left:270px;top:200px"></div>
@@ -541,7 +545,7 @@ button{touch-action:manipulation}
 </div>
 </div>
 </div>
-<div class="stage web" style="--w:1440;--h:900">
+<div class="stage web fit" style="--w:1440;--h:900">
 <div class="wscr" style="width:1440px;height:900px;background:linear-gradient(180deg,#BFD9EC 0%,#DAEAF6 50%,#EEF6FC 100%)">
 <div class="cloud lg" style="left:120px;top:140px"></div>
 <div class="cloud sm soft" style="left:300px;top:70px"></div>
@@ -1385,6 +1389,8 @@ button{touch-action:manipulation}
     + '</svg></span>';
 
   // 뷰별 배치 (시안 돌 1~10 실측 좌표). plane/pill 은 도전 중 돌 기준 상대 오프셋.
+  // 기본은 시안의 "돌 위쪽" 배치(돌 8 기준)인데, 위쪽 줄 돌에서는 비행기가
+  // "스테이지 징검다리" 제목·안내문을 덮으므로 해당 돌만 절대좌표로 비켜 배치한다.
   const STONE_LAYOUT = {
     m: {
       size: [78, 60],
@@ -1392,6 +1398,8 @@ button{touch-action:manipulation}
         [230, 1160], [130, 1260], [260, 1360], [80, 1460], [220, 1560]],
       plane: { dx: -24, dy: -80, w: 107, h: 97 },
       pill: { dx: -9, dy: 66 },
+      planeAt: { 1: [146, 646] },            // 돌 1: 헤더(≤~630px)와 겹침 → 돌 오른쪽
+      pillAt: {},
     },
     w: {
       size: [89, 69],
@@ -1399,6 +1407,8 @@ button{touch-action:manipulation}
         [1000, 380], [820, 440], [900, 560], [1080, 600], [1260, 660]],
       plane: { dx: -34, dy: -99, w: 133, h: 121 },
       pill: { dx: -11, dy: 75 },
+      planeAt: { 1: [612, 116], 2: [784, 180], 3: [1076, 223] }, // 헤더(≤~105px) 회피
+      pillAt: { 3: [995, 162] },             // 돌 3: 비행기가 아래로 간 자리라 필은 왼쪽
     },
   };
 
@@ -1441,23 +1451,26 @@ button{touch-action:manipulation}
         host.appendChild(btn);
 
         if (status === 'cur') {
+          const planePos = layout.planeAt[s]
+            || [p[0] + layout.plane.dx, p[1] + layout.plane.dy];
           const plane = document.createElement('img');
           plane.className = 'plane side';
           plane.src = 'assets/bunny_happy.png';
           plane.alt = '토끼 비행기';
           plane.dataset.gen = '1';
-          plane.style.cssText = 'left:' + (p[0] + layout.plane.dx) + 'px;top:'
-            + (p[1] + layout.plane.dy) + 'px;width:' + layout.plane.w + 'px;height:'
+          plane.style.cssText = 'left:' + planePos[0] + 'px;top:' + planePos[1]
+            + 'px;width:' + layout.plane.w + 'px;height:'
             + layout.plane.h + 'px;transform:rotate(-8deg)';
           host.appendChild(plane);
 
+          const pillPos = layout.pillAt[s]
+            || [p[0] + layout.pill.dx, p[1] + layout.pill.dy];
           const pill = document.createElement('div');
           pill.className = 'prog-pill';
           pill.dataset.gen = '1';
           pill.textContent = prog.stoneProgress(cleared, s) + ' / '
             + prog.PROBLEMS_PER_STONE + ' 문제';
-          pill.style.cssText = 'left:' + (p[0] + layout.pill.dx) + 'px;top:'
-            + (p[1] + layout.pill.dy) + 'px';
+          pill.style.cssText = 'left:' + pillPos[0] + 'px;top:' + pillPos[1] + 'px';
           host.appendChild(pill);
         }
       }

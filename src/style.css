@@ -150,6 +150,10 @@ body{display:block;container-type:inline-size}
 /* .stone.done/.lock 은 돌 SVG path 형상 자체가 달라 CSS 토글 불가 — JS 단계에서 상태별 템플릿 필요 */
 
 /* ======== 구현 추가분 (게임 로직 결합 — 시안·앱 셸 레이어 외 신규) ======== */
+/* 고정 높이 화면(.fit: 플레이·클리어·다시하기·웹 전체)은 세로도 화면에 맞춰 축소 —
+   폰에서 하단 화살표 버튼이 잘리는 문제 방지. 48px = body 상하 패딩.
+   (모바일 시작 화면은 의도된 세로 스크롤이라 제외. dvh 미지원 브라우저는 가로 기준 폴백) */
+.stage.fit{--s:min(1, calc(100cqw / (var(--w) * 1px)), calc((100dvh - 48px) / (var(--h) * 1px)))}
 /* 낙하물 클리핑: 모바일은 레인에서, 웹은 보드(판정선이 레인 740 아래 730)에서 자른다 */
 #screen-play .stage.mob .lanes{overflow:hidden}
 #screen-play .stage.web .board{overflow:hidden}
